@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Churn Prediction</title>
+</head>
+
+<body style="background: white" text="black">
+
+    <div class="login">
+        <center>
+            <h1>Customer Churn Prediction</h1>
+        </center>
+
+        <!-- Main Input For Receiving Query to our ML -->
+        <form action="{{ url_for('predict')}}" method="post">
+
+
+            <center>
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender">
+                    <option value=0>Male</option>
+                    <option value=1>Female</option>
+                </select> &nbsp;&nbsp;
+
+                <label for="Senior Citizen">Senior Citizen:</label>
+                <select id="SeniorCitizen" name="SeniorCitizen">
+                    <option value=0>No</option>
+                    <option value=1>Yes</option>
+                </select> &nbsp;&nbsp;
+
+                <label for="Partner">Has a partner?:</label>
+                <select id="Partner" name="Partner">
+                    <option value=0>No</option>
+                    <option value=1>Yes</option>
+                </select> &nbsp;&nbsp;
+
+                <label for="Dependents">Has dependents?:</label>
+                <select id="Dependents" name="Dependents">
+                    <option value=0>No</option>
+                    <option value=1>Yes</option>
+                </select> &nbsp;&nbsp;
+
+                <label for="PaperlessBilling">Paperless Billing:</label>
+                <select id="PaperlessBilling" name="PaperlessBilling">
+                    <option value=0>No</option>
+                    <option value=1>Yes</option>
+                </select> &nbsp;&nbsp;
+
+                <label for="PhoneService">Phone Service:</label>
+                <select id="PhoneService" name="PhoneService">
+                    <option value=0>No</option>
+                    <option value=1>Yes</option>
+                </select> &nbsp;&nbsp;
+
+                <label for="MultipleLines">Multiple Lines:</label>
+                <select id="MultipleLines" name="MultipleLines">
+                    <option value=0>No</option>
+                    <option value=1>Yes</option>
+                </select> &nbsp;&nbsp;
+            </center>
+            <br>
+            <center>
+                <label for="OnlineSecurity">Online Security:</label>
+                <select id="OnlineSecurity" name="OnlineSecurity">
+                    <option value=0>No</option>
+                    <option value=1>Yes</option>
+                </select> &nbsp;&nbsp;
+
+                <label for="OnlineBackup">Online Backup:</label>
+                <select id="OnlineBackup" name="OnlineBackup">
+                    <option value=0>No</option>
+                    <option value=1>Yes</option>
+                </select> &nbsp;&nbsp;
+
+                <label for="DeviceProtection">Device Protection:</label>
+                <select id="DeviceProtection" name="DeviceProtection">
+                    <option value=0>No</option>
+                    <option value=1>Yes</option>
+                </select> &nbsp;&nbsp;
+
+                <label for="TechSupport">Tech Support:</label>
+                <select id="TechSupport" name="TechSupport">
+                    <option value=0>No</option>
+                    <option value=1>Yes</option>
+                </select> &nbsp;&nbsp;
+
+                <label for="StreamingTV">Streaming TV:</label>
+                <select id="StreamingTV" name="StreamingTV">
+                    <option value=0>No</option>
+                    <option value=1>Yes</option>
+                </select> &nbsp;&nbsp;
+
+                <label for="StreamingMovies">Streaming Movies:</label>
+                <select id="StreamingMovies" name="StreamingMovies">
+                    <option value=0>No</option>
+                    <option value=1>Yes</option>
+                </select> &nbsp;&nbsp;
+            </center>
+            <br>
+            <center>
+                <label for="InternetService_No">Internet (No)?:</label>
+                <select id="InternetService_No" name="InternetService_No">
+                    <option value=0>No</option>
+                    <option value=1>Yes</option>
+                </select> &nbsp;&nbsp;
+
+                <label for="InternetService_Fiber optic">Internet (Fiber optic)?:</label>
+                <select id="InternetService_Fiber optic" name="InternetService_Fiber optic">
+                    <option value=0>No</option>
+                    <option value=1>Yes</option>
+                </select> &nbsp;&nbsp;
+            </center>
+            <br>
+            <center>
+                <label for="Contract_One year">Contract (One-Year?):</label>
+                <select id="Contract_One year" name="Contract_One year">
+                    <option value=0>No</option>
+                    <option value=1>Yes</option>  
+                </select>&nbsp;&nbsp;
+
+                <label for="Contract_Two year">Contract (Two-Year)?:</label>
+                <select id="Contract_Two year" name="Contract_Two year">
+                    <option value=0>No</option>
+                    <option value=1>Yes</option>
+                </select>&nbsp;&nbsp;
+            </center>
+            <br>
+            <center>
+                <label for="PaymentMethod_Credit card (automatic)">Payment (Credit Card)?:</label>
+                <select id="PaymentMethod_Credit card (automatic)" name="PaymentMethod_Credit card (automatic)">
+                    <option value=0>No</option>
+                    <option value=1>Yes</option>
+                </select>&nbsp;&nbsp;
+
+                <label for="PaymentMethod_Electronic check">Payment (Electronic Check)?:</label>
+                <select id="PaymentMethod_Electronic check" name="PaymentMethod_Electronic check">
+                    <option value=0>No</option>
+                    <option value=1>Yes</option>
+                </select>&nbsp;&nbsp;
+
+                <label for="PaymentMethod_Mailed check">Payment (Mailed Check)?:</label>
+                <select id="PaymentMethod_Mailed check" name="PaymentMethod_Mailed check">
+                    <option value=0>No</option>
+                    <option value=1>Yes</option>
+                </select>&nbsp;&nbsp;
+            </center>
+            <br>
+
+            <center>
+                <input type="number" min="0" name="MonthlyCharges" placeholder="Monthly Charges" required="required" />
+                <input type="number" min="0" name="TotalCharges" placeholder="Total Charges" required="required" />
+                <input type="number" min="0" name="tenure" placeholder="Tenure in Months" required="required" />
+            </center>
+            <br><br>
+
+            <center>
+                <button type="submit" class="btn btn-primary btn-block btn-large"
+                    style="height:30px;width:200px">Predict</button>
+            </center>
+        </form>
+        <br>
+        <center>
+
+                {{ result }}
+
+        </center>
+    </div>
+
+</body>
+</html>
