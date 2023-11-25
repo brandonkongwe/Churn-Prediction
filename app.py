@@ -11,7 +11,7 @@ app = Flask(__name__)
 # Loading the pre-trained deep neural network
 model = load_model('dnn_model.keras')
 
-# Loading the scaler to normalize the data
+# Loading the scaler to scale the data
 min_scaler = joblib.load('min_scaler.joblib')
 
 @app.route('/')
