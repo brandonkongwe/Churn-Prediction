@@ -40,7 +40,7 @@ def predict():
         output = round(prediction[0, 0] * 100, 1)
         print(output)
 
-        return render_template('index.html', result='This customer\'s churn probability is {}%'.format(output))
+        return render_template('predict.html', result='This customer\'s churn probability is {}%'.format(output))
     except Exception as e:
         return render_template('index.html', result='Error: {}'.format(str(e)))
 

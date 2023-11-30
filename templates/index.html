@@ -14,8 +14,7 @@
         </center>
 
         <!-- Main Input For Receiving Query to our ML -->
-        <form action="{{ url_for('predict')}}" method="post">
-
+        <form action="{{ url_for('predict')}}" method="post" id="predictionForm" onsubmit="submitForm(event)">
 
             <center>
                 <label for="gender">Gender:</label>
@@ -126,7 +125,7 @@
                 <select id="Contract_One year" name="Contract_One year">
                     <option value=0>No</option>
                     <option value=0>Month-To-Month</option>
-                    <option value=1>Yes</option>  
+                    <option value=1>Yes</option>
                 </select>&nbsp;&nbsp;
 
                 <label for="Contract_Two year">Contract (Two-Year)?:</label>
@@ -164,12 +163,38 @@
             </center>
         </form>
         <br>
+        <!-- Prediction result -->
         <center>
-            <h3>
-                {{ result }}
-            </h3>
+            <div id="predictionResult">
+                <h3>
+                    {{ result }}
+                </h3>
+            </div>
         </center>
+        
+        <!-- referred from https://www.appsloveworld.com/coding/flask/52/submit-flask-form-without-re-rendering-the-page -->
+        <script>
+            function submitForm(event) {
+                event.preventDefault(); // Prevent the default form submission
+
+                // Collect form data
+                var formData = new FormData(document.getElementById('predictionForm'));
+
+                // Send AJAX request
+                fetch('/predict', {
+                    method: 'POST',
+                    body: formData,
+                })
+                    .then(response => response.text())
+                    .then(data => {
+                        // Update the result section
+                        document.getElementById('predictionResult').innerHTML = data;
+                    })
+                    .catch(error => console.error('Error:', error));
+            }
+        </script>
     </div>
 
 </body>
+
 </html>
