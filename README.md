@@ -7,7 +7,6 @@ A deep neural network was created using Keras to predict customer churn within a
 - Download Anaconda (https://www.anaconda.com/download)
 - Open Anaconda Prompt and install the following dependencies:
    - conda install tensorflow
-   - conda install keras
    - conda install python-graphviz
    - pip install imblearn
    - pip install keras-visualizer
