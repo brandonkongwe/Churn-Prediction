@@ -1,4 +1,4 @@
-# CET313_Assignment_BI56LZ
+# Churn-Prediction
 CET313 Artificial Intelligence assignment - Customer churn prediction using deep neural networks. <br><br>
 A deep neural network was created using Keras to predict customer churn within a telecommunications company using the IBM Telco dataset 
 (https://www.kaggle.com/datasets/blastchar/telco-customer-churn). The model was then deployed as a web application using Flask.
